@@ -35,7 +35,7 @@ function startGame() {
     model.secondsRemaining = GAME_DURATION;
     model.allowedLetters = generateAllowedLetters();
     model.wordSubmissions = [];
-    model.words = []
+    model.words = [];
     model.currentAttempt = "";
     model.timer = startTimer();
 }
@@ -156,14 +156,17 @@ function render() {
     // GAME -------------------------------------
 
     // clear stuff
-    $("#textbox").removeClass("disallowed-letter");
+
     //$("#wrongletter").remove();
-    $("#textbox").attr("disabled", false)
+
 
 
 
     $("#allowed-letters").empty();
     $("#word-submissions").empty();
+
+    $("#textbox").removeClass("bad-attempt").attr("disabled", false);
+    $(".disallowed-letter").remove();
 
     // TODO 10
     // Add a few things to the above code block (underneath "// clear stuff").
@@ -338,11 +341,9 @@ function isDisallowedLetter(letter) {
     // TODO 7
     // This should return true if the letter is not an element of
     // the .allowedLetters list in the model
-    if (model.allowedLetters.indexOf(letter) == -1){
-        return true;
-    } else {
-      return false;
-    }
+
+    return (model.allowedLetters.indexOf(letter) == -1)
+
 
 }
 
